@@ -7,8 +7,10 @@ features = ['checking account balance', 'duration', 'credit history',
             'property', 'age', 'other installments', 'housing', 'credits',
             'job', 'persons', 'phone', 'foreign']
 target = 'repaid'
-df = pandas.read_csv('../../data/credit/german.data', sep=' ',
+
+df = pandas.read_csv('c:/git/ml-society-science/data/credit/german.data', sep=' ',
                      names=features+[target])
+
 import matplotlib.pyplot as plt
 numerical_features = ['duration', 'age', 'residence time', 'installment', 'amount', 'duration', 'persons', 'credits']
 quantitative_features = list(filter(lambda x: x not in numerical_features, features))
@@ -41,7 +43,7 @@ def test_decision_maker(X_test, y_test, interest_rate, decision_maker):
 ### Setup model
 #import logistic_banker
 #decision_maker = logistic_banker.LogisticBanker()
-import reference_banker
+from name_banker import NameBanker
 from sklearn.ensemble import BaggingClassifier, RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import linear_model
@@ -52,7 +54,7 @@ bagging = BaggingClassifier(KNeighborsClassifier(), n_estimators=10)
 random_forest = RandomForestClassifier(n_estimators=100)
 knn = KNeighborsClassifier()
 logistic = linear_model.LogisticRegression()
-decision_maker = reference_banker.ReferenceBanker(bagging)
+decision_maker = NameBanker()
 #import random_banker
 #decision_maker = random_banker.RandomBanker()
 interest_rate = 0.05
