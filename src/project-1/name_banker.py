@@ -48,7 +48,7 @@ class NameBanker:
             probability_loss = (1-predict_proba(x))
             probability_profit = 1 - probability_loss
 
-            utility = probability_profit*loan_amount*(1+rate)^length_of_loan - probability_loss*length_of_loan 
+            utility = probability_profit*loan_amount*(1+rate)^length_of_loan - probability_loss*loan_amount 
 
         return utility
                      
